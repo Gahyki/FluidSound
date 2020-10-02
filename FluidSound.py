@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 song = './test/maadcity.wav'
-audio, sfreq = lr.load(song, sr=10000)
+audio, sfreq = lr.load(song, sr=23000)
 time = np.arange(0, len(audio)) / sfreq
 onset_env = lr.onset.onset_strength(audio, sr=sfreq)
 tempo = lr.beat.tempo(onset_env, sr=sfreq)
