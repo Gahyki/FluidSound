@@ -15,6 +15,7 @@ print(tempo)
 #Find first chord
 
 
+#Amplitude to time graph
 time = np.arange(0, len(audio)) / sr
 fig, ax = plt.subplots()
 ax.plot(time, audio)
