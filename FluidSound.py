@@ -1,18 +1,24 @@
 import librosa as lr
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
+import timeit
 
-song = './test/maadcity.wav'
-audio, sfreq = lr.load(song, sr=23000)
-time = np.arange(0, len(audio)) / sfreq
-onset_env = lr.onset.onset_strength(audio, sr=sfreq)
-tempo = lr.beat.tempo(onset_env, sr=sfreq)
+
+#Reading file
+song = './wav/starwars3.wav'
+audio, sr = lr.load(song)
+
+#Find BPM
+tempo, beat_frames = lr.beat.beat_track(y=audio, sr=sr)
 print(tempo)
 
-# fig, ax = plt.subplots()
-# ax.plot(time, audio)
+#Find first chord
 
-# ax.set(xlabel='Time(s)', ylabel='Sound Amplitude')
-# plt.show()
+
+time = np.arange(0, len(audio)) / sr
+fig, ax = plt.subplots()
+ax.plot(time, audio)
+
+ax.set(xlabel='Time(s)', ylabel='Sound Amplitude')
+plt.show()
 
